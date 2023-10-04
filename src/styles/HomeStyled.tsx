@@ -15,6 +15,7 @@ export const SecGame = styled.section`
   display: flex;
   flex-flow: row wrap;
   margin-top: 2vh;
+  z-index: 1000;
   button {
     width: 33%;
     height: 36%;
@@ -126,6 +127,6 @@ div{
   }
 }
 @media (max-width: 420px) and (max-height: 700px){
-  bottom: 10vh;
+  bottom: 9vh;
 }
 `;
