@@ -1,18 +1,18 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
-import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
+import { applyMiddleware, legacy_createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import counterReducer from '../redux/reducers/counterReducer.ts';
 import { GlobalState } from '../types';
+import { rootReducer } from '../redux/index.ts';
 
 function renderWithRouterAndRedux(
   component: JSX.Element,
   route: string = '/',
   state: GlobalState | undefined = undefined,
   store = legacy_createStore(
-    combineReducers({ counterReducer }),
+    rootReducer,
     state,
     applyMiddleware(thunk),
   ),
