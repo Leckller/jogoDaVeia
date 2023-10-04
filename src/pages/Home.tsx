@@ -16,55 +16,18 @@ function Home() {
   const img = store.ClickReducer.choseP.player === true ? x : o;
   const [player, setPlayer] = useState(false);
   useEffect(() => {
-    if (velha(store, [1, 2, 3]).vId.test) {
+    if (!velha(store).victory && store.ClickReducer.game
+      .filter((e) => e.v === true).length === 8) {
       setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [1, 2, 3]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
+        window.alert('Velha!');
+        dispatch(startGame());
       }, 200);
     }
-    if (velha(store, [4, 5, 6]).vId.test) {
+    if (velha(store).victory) {
       setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [4, 5, 6]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
+        alert(`Vitória do ${velha(store).winner?.slice(12, 13)}`);
+        dispatch(startGame());
       }, 200);
-    }
-    if (velha(store, [7, 8, 9]).vId.test) {
-      setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [7, 8, 9]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
-      }, 200);
-    }
-    if (velha(store, [1, 4, 5]).vId.test) {
-      setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [1, 4, 5]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
-      }, 200);
-    }
-    if (velha(store, [2, 5, 8]).vId.test) {
-      setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [2, 5, 8]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
-      }, 200);
-    }
-    if (velha(store, [3, 6, 9]).vId.test) {
-      setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [3, 6, 9]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
-      }, 200);
-    }
-    if (velha(store, [1, 5, 9]).vId.test) {
-      setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [1, 5, 9]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
-      }, 200);
-    }
-    if (velha(store, [3, 5, 7]).vId.test) {
-      setTimeout(() => {
-        window.alert(`Vitória do ${velha(store, [3, 5, 7]).vId.winner?.slice(12, 13)}`);
-        dispatch(startGame()); return '';
-      }, 200);
-    } if (velha(store, [9, 90, 9]).vV) {
-      window.alert('velha!'); dispatch(startGame());
     }
   }, [store]);
   return (
