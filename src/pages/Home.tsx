@@ -1,6 +1,5 @@
-/* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable array-callback-return */
+/* eslint-disable no-alert */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { SecGame, Main, ImgPlayers } from '../styles/HomeStyled';

@@ -1,16 +1,16 @@
-import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
+import { applyMiddleware, legacy_createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import thunk from 'redux-thunk';
 import { GlobalState } from '../types';
-import counterReducer from '../redux/reducers/counterReducer';
+import { rootReducer } from '../redux';
 
 function renderWithRedux(
   component: JSX.Element,
   state: GlobalState | undefined = undefined,
   store = legacy_createStore(
-    combineReducers({ counterReducer }),
+    rootReducer,
     state,
     applyMiddleware(thunk),
   ),
