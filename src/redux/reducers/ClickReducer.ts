@@ -103,7 +103,7 @@ export function velha(state: { ClickReducer: { game: ST[] } }) {
     if (verifyById([3, 5, 7]).test) {
       return { victory: true, winner: verifyById([3, 5, 7]).winner };
     }
-    return { victory: isVelha(state), winner: 'draw' };
+    return { victory: !isVelha(state), winner: 'draw' };
   }
   return allTests();
 }

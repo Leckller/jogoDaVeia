@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
     console.log(store.ClickReducer.game
       .filter((e) => e.v === true));
-    if ((velha(store).victory) && store.ClickReducer.game
+    if (!(velha(store).victory) && store.ClickReducer.game
       .filter((e) => e.v === true).length === 9) {
       setTimeout(() => {
         window.alert('Velha!');
