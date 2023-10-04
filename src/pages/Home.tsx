@@ -2,6 +2,7 @@
 /* eslint-disable no-alert */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { SecGame, Main, ImgPlayers, ImgsDiv } from '../styles/HomeStyled';
 import { Dispatch, GlobalState } from '../types';
 import { changePlayer, clickAction, startGame } from '../redux/actions/ClickAction';
@@ -18,14 +19,20 @@ function Home() {
     if (!(velha(store).victory) && store.ClickReducer.game
       .filter((e) => e.v === true).length === 9) {
       setTimeout(() => {
-        window.alert('Velha!');
+        Swal.fire({
+          title: 'Velha!',
+          text: 'São 2 idosos jogando?',
+        });
         dispatch(startGame());
       }, 200);
     }
     if (velha(store).victory && velha(store).winner !== 'draw') {
       setTimeout(() => {
         console.log(velha(store).winner);
-        alert(`Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`);
+        Swal.fire({
+          title: `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
+          text: `Não foi dessa vez Player ${velha(store).winner === 1 ? '2' : '1'}`,
+        });
         dispatch(startGame());
       }, 200);
     }

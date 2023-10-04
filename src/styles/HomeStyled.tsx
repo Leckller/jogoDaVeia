@@ -17,7 +17,7 @@ export const SecGame = styled.section`
   margin-top: 2vh;
   button {
     width: 33%;
-    height: 33%;
+    height: 36%;
     background-color: transparent;
     border: none;
     box-shadow: 3px 3px 9px black
@@ -25,8 +25,6 @@ export const SecGame = styled.section`
   @media (max-width: 420px) {
     width: 80%;
     height: 40%;
-    button {
-    }
   }
 `;
 type ImgPlayersType = {
