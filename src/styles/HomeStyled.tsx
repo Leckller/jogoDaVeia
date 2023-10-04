@@ -111,10 +111,11 @@ div{
   flex-flow: row wrap;
   font-size: 3vw;
   div {
-    width: 32%;
+    width: 30%;
+    margin: 1%;
     div{
-      width: 33%;
-      height: 33%;
+      width: 30%;
+      height: 30%;
       background-color: white;
       border: none;
     }
