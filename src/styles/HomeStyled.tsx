@@ -105,7 +105,7 @@ div{
 }
 @media (max-width: 420px) {
   position: absolute;
-  bottom: 22vh;
+  bottom: 20vh;
   width: 100vw;
   display: flex;
   flex-flow: row wrap;
@@ -123,5 +123,8 @@ div{
       height: 33%;
     }
   }
+}
+@media (max-width: 420px) and (max-height: 700px){
+  bottom: 10vh;
 }
 `;
