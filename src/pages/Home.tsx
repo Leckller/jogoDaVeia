@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { SecGame, Main, ImgPlayers, ImgsDiv } from '../styles/HomeStyled';
 import { Dispatch, GlobalState } from '../types';
-import { changePlayer, clickAction, startGame } from '../redux/actions/ClickAction';
+import { changePlayer, clickAction, saveGame,
+  startGame } from '../redux/actions/ClickAction';
 import x from '../assets/x.png';
 import o from '../assets/o.png';
 import { velha } from '../utils/velha';
@@ -23,6 +24,7 @@ function Home() {
           title: 'Velha!',
           text: 'São 2 idosos jogando?',
         });
+        dispatch(saveGame(store.ClickReducer.game));
         dispatch(startGame());
       }, 200);
     }
@@ -33,6 +35,7 @@ function Home() {
           title: `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
           text: `Não foi dessa vez Player ${velha(store).winner === 1 ? '2' : '1'}`,
         });
+        dispatch(saveGame(store.ClickReducer.game));
         dispatch(startGame());
       }, 200);
     }

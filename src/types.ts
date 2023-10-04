@@ -8,12 +8,15 @@ export type ST = {
   player: number
 };
 
+export type Game = { v: boolean, id: number, img: string, player: number }[];
+
 export type GlobalState = {
   ClickReducer: {
-    game: { v: boolean, id: number, img: string, player: number }[],
+    game: Game,
     user1: { mark: boolean }
     user2: { mark: boolean }
     choseP: { player: boolean }
+    lastGame: Game[],
   }
 };
 

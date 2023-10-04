@@ -10,8 +10,8 @@ export const Main = styled.main`
 `;
 
 export const SecGame = styled.section`
-  width: 40%;
-  height: 100%;
+  width: 35%;
+  height: 80%;
   display: flex;
   flex-flow: row wrap;
   margin-top: 2vh;
@@ -73,5 +73,42 @@ export const ImgsDiv = styled.div`
         width: 30vw;
       flex-flow: row wrap;
       }
+}
+`;
+
+export const SecLastGames = styled.section`
+  width: 100vw;
+  text-align: center;
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  padding: 10vw;
+h3 {
+  width: 100%;
+}
+div{
+  height: 15vh;
+  width: 33%;
+  height: 20vw;
+  border: solid 1px black;
+  display: flex;
+  flex-flow: row wrap;
+  img{
+    width: 33%;
+    height: 33%;
+    box-shadow: 3px 3px 9px black;
+  }
+}
+@media (max-width: 420px) {
+  position: absolute;
+  bottom: 22vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 3vw;
+  div {
+    width: 32%;
+  }
 }
 `;
