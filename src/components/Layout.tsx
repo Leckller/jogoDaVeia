@@ -15,7 +15,8 @@ function Layout() {
           {store.ClickReducer.lastGame[0]
           && store.ClickReducer.lastGame[store.ClickReducer.lastGame.length - 1]
             .map((e) => (
-              <img src={ e.img } alt="" key={ e.id } />
+              (e.v
+                ? <img src={ e.img } alt="" key={ e.id } /> : <div key={ e.id } />)
             ))}
 
         </div>
@@ -23,14 +24,16 @@ function Layout() {
           {store.ClickReducer.lastGame[1]
           && store.ClickReducer.lastGame[store.ClickReducer.lastGame.length - 2]
             .map((e) => (
-              <img src={ e.img } alt="" key={ e.id } />
+              (e.v
+                ? <img src={ e.img } alt="" key={ e.id } /> : <div key={ e.id } />)
             ))}
         </div>
         <div>
           {store.ClickReducer.lastGame[2]
           && store.ClickReducer.lastGame[store.ClickReducer.lastGame.length - 3]
             .map((e) => (
-              <img src={ e.img } alt="" key={ e.id } />
+              (e.v
+                ? <img src={ e.img } alt="" key={ e.id } /> : <div key={ e.id } />)
             ))}
         </div>
       </SecLastGames>

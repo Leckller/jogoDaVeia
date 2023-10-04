@@ -99,6 +99,9 @@ div{
     height: 33%;
     box-shadow: 3px 3px 9px black;
   }
+  div {
+    box-shadow: 3px 3px 9px black;
+  }
 }
 @media (max-width: 420px) {
   position: absolute;
@@ -109,6 +112,16 @@ div{
   font-size: 3vw;
   div {
     width: 32%;
+    div{
+      width: 33%;
+      height: 33%;
+      background-color: white;
+      border: none;
+    }
+    img {
+      width: 33%;
+      height: 33%;
+    }
   }
 }
 `;
