@@ -65,6 +65,7 @@ export const ImgsDiv = styled.div`
     flex-flow: row nowrap;
     justify-content: space-around;
     text-align: center;
+    margin-bottom: 20px;
     div {
       width: 10vw;
       flex-flow: row wrap;
