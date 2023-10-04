@@ -7,6 +7,12 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  div{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
 `;
 
 export const SecGame = styled.section`
@@ -16,5 +22,16 @@ export const SecGame = styled.section`
   flex-flow: row wrap;
   button {
     width: 33%;
+    height: 33%;
   }
+`;
+type ImgPlayersType = {
+  imgP: {
+    opacity: string;
+  }
+};
+
+export const ImgPlayers = styled.img<ImgPlayersType>`
+  width: 10vw;
+  filter: opacity(${(props) => props.imgP.opacity})
 `;

@@ -11,7 +11,7 @@ function App() {
       box-sizing: border-box;
     }
     img{
-      width: 10px
+      width: 50%;
     }
   `;
   return (
