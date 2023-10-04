@@ -38,6 +38,7 @@ type ImgPlayersType = {
 export const ImgPlayers = styled.img<ImgPlayersType>`
   width: 8vw;
   height: 8vw;
+  transition: 800ms;
   filter: opacity(${(props) => props.imgP.opacity});
   @media (max-width: 420px) {
     width: 15vw;
