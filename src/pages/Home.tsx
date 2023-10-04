@@ -16,14 +16,16 @@ function Home() {
   const img = store.ClickReducer.choseP.player === true ? x : o;
   const [player, setPlayer] = useState(false);
   useEffect(() => {
-    if (!velha(store).victory && store.ClickReducer.game
-      .filter((e) => e.v === true).length === 8) {
+    console.log(store.ClickReducer.game
+      .filter((e) => e.v === true));
+    if ((velha(store).victory) && store.ClickReducer.game
+      .filter((e) => e.v === true).length === 9) {
       setTimeout(() => {
         window.alert('Velha!');
         dispatch(startGame());
       }, 200);
     }
-    if (velha(store).victory) {
+    if (velha(store).victory && velha(store).winner !== 'draw') {
       setTimeout(() => {
         alert(`Vitória do ${velha(store).winner?.slice(12, 13)}`);
         dispatch(startGame());

@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import { Header } from '../styles/HomeStyled';
 
 function Layout() {
   return (
     <div>
-      <header><h1>Jogo da Velha</h1></header>
+      <Header><h1>Jogo da Velha</h1></Header>
       <Outlet />
     </div>
   );

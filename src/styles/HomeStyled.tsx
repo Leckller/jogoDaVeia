@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  margin: 5vh 0;
   div{
     width: 100%;
     display: flex;
@@ -16,7 +16,7 @@ export const Main = styled.main`
 `;
 
 export const SecGame = styled.section`
-  width: 50%;
+  width: 40%;
   height: 70%;
   display: flex;
   flex-flow: row wrap;
@@ -32,6 +32,12 @@ type ImgPlayersType = {
 };
 
 export const ImgPlayers = styled.img<ImgPlayersType>`
-  width: 10vw;
+  width: 8vw;
   filter: opacity(${(props) => props.imgP.opacity})
+`;
+
+export const Header = styled.header`
+  width: 100vw;
+  align-items: center;
+  text-align: center;
 `;
