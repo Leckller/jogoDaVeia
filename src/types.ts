@@ -5,11 +5,12 @@ export type ST = {
   v: boolean,
   id: number,
   img: string,
+  player: number
 };
 
 export type GlobalState = {
   ClickReducer: {
-    game: { v: boolean, id: number, img: string }[],
+    game: { v: boolean, id: number, img: string, player: number }[],
     user1: { mark: boolean }
     user2: { mark: boolean }
     choseP: { player: boolean }

@@ -7,7 +7,7 @@ import { Dispatch, GlobalState } from '../types';
 import { changePlayer, clickAction, startGame } from '../redux/actions/ClickAction';
 import x from '../assets/x.png';
 import o from '../assets/o.png';
-import { velha } from '../redux/reducers/ClickReducer';
+import { velha } from '../utils/velha';
 
 function Home() {
   const dispatch: Dispatch = useDispatch();
@@ -15,8 +15,6 @@ function Home() {
   const img = store.ClickReducer.choseP.player === true ? x : o;
   const [player, setPlayer] = useState(false);
   useEffect(() => {
-    console.log(store.ClickReducer.game
-      .filter((e) => e.v === true));
     if (!(velha(store).victory) && store.ClickReducer.game
       .filter((e) => e.v === true).length === 9) {
       setTimeout(() => {
@@ -26,7 +24,8 @@ function Home() {
     }
     if (velha(store).victory && velha(store).winner !== 'draw') {
       setTimeout(() => {
-        alert(`Vitória do ${velha(store).winner?.slice(12, 13)}`);
+        console.log(velha(store).winner);
+        alert(`Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`);
         dispatch(startGame());
       }, 200);
     }
