@@ -1,11 +1,7 @@
 import { composeWithDevTools } from '@redux-devtools/extension';
-import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
+import { applyMiddleware, legacy_createStore } from 'redux';
 import thunk from 'redux-thunk';
-import ClickReducer from './reducers/ClickReducer';
-
-const rootReducer = combineReducers({
-  ClickReducer,
-});
+import rootReducer from './reducers';
 
 const store = legacy_createStore(
   rootReducer,

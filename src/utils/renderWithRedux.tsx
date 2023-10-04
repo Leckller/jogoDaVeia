@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import thunk from 'redux-thunk';
 import { GlobalState } from '../types';
-import { rootReducer } from '../redux';
+import rootReducer from '../redux/reducers';
 
 function renderWithRedux(
   component: JSX.Element,
