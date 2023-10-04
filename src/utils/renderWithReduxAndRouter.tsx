@@ -5,7 +5,7 @@ import { applyMiddleware, legacy_createStore } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { GlobalState } from '../types';
-import { rootReducer } from '../redux/index.ts';
+import rootReducer from '../redux/reducers';
 
 function renderWithRouterAndRedux(
   component: JSX.Element,
