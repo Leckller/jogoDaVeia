@@ -2,30 +2,45 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 5vh 0;
+  z-index: 1000;
+  @media (max-width: 420px) {
+    width: 100vw;
+    height: 110vw;
+  }
+
 `;
+
+const LayoutDiv = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+`;
+
+export default LayoutDiv;
 
 export const SecGame = styled.section`
   width: 35%;
-  height: 80%;
+  height: 10vw;
   display: flex;
   flex-flow: row wrap;
   margin-top: 2vh;
-  z-index: 1000;
   button {
     width: 33%;
-    height: 36%;
+    height: 100%;
     background-color: transparent;
     border: none;
     box-shadow: 3px 3px 9px black
   }
   @media (max-width: 420px) {
     width: 80%;
-    height: 40%;
+    height: 20%;
   }
 `;
 type ImgPlayersType = {
@@ -85,7 +100,7 @@ export const SecLastGames = styled.section`
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
-  padding: 10vw;
+  padding: 20vw;
 h3 {
   width: 100%;
 }
@@ -97,17 +112,18 @@ div{
   display: flex;
   flex-flow: row wrap;
   img{
-    width: 33%;
-    height: 33%;
+    width: 32%;
+    height: 32%;
     box-shadow: 3px 3px 9px black;
   }
   div {
+    width: 32%;
+    height: 32%;
     box-shadow: 3px 3px 9px black;
   }
 }
 @media (max-width: 420px) {
-  position: absolute;
-  bottom: 20vh;
+  transform: scale(125%);
   width: 100vw;
   display: flex;
   flex-flow: row wrap;
@@ -128,6 +144,6 @@ div{
   }
 }
 @media (max-width: 420px) and (max-height: 700px){
-  bottom: 9vh;
+  overflow-y: auto;
 }
 `;

@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Footer, Header, SecLastGames } from '../styles/HomeStyled';
+import LayoutDiv, { Footer, Header, SecLastGames } from '../styles/HomeStyled';
 import { GlobalState } from '../types';
 
 function Layout() {
   const store = useSelector((state:GlobalState) => state);
   return (
-    <div>
+    <LayoutDiv id="secGame">
       <Header><h1>Jogo da Velha</h1></Header>
       <Outlet />
       <SecLastGames>
@@ -38,7 +38,7 @@ function Layout() {
         </div>
       </SecLastGames>
       <Footer>feat by ruy</Footer>
-    </div>
+    </LayoutDiv>
   );
 }
 
