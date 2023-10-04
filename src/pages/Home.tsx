@@ -2,7 +2,7 @@
 /* eslint-disable no-alert */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { SecGame, Main, ImgPlayers } from '../styles/HomeStyled';
+import { SecGame, Main, ImgPlayers, ImgsDiv } from '../styles/HomeStyled';
 import { Dispatch, GlobalState } from '../types';
 import { changePlayer, clickAction, startGame } from '../redux/actions/ClickAction';
 import x from '../assets/x.png';
@@ -13,7 +13,7 @@ function Home() {
   const dispatch: Dispatch = useDispatch();
   const store = useSelector((state: GlobalState) => state);
   const img = store.ClickReducer.choseP.player === true ? x : o;
-  const [player, setPlayer] = useState(false);
+  const [player, setPlayer] = useState(true);
   useEffect(() => {
     if (!(velha(store).victory) && store.ClickReducer.game
       .filter((e) => e.v === true).length === 9) {
@@ -32,7 +32,7 @@ function Home() {
   }, [store]);
   return (
     <Main>
-      <div>
+      <ImgsDiv>
         <ImgPlayers
           imgP={
            { opacity: player ? '100%' : '10%' }
@@ -40,6 +40,7 @@ function Home() {
           src={ x }
           alt=""
         />
+        <div><h2>{`Vez do Player ${player ? '1' : '2'}`}</h2></div>
         <ImgPlayers
           imgP={
           { opacity: player ? '10%' : '100%' }
@@ -47,7 +48,7 @@ function Home() {
           src={ o }
           alt=""
         />
-      </div>
+      </ImgsDiv>
       <SecGame>
         {store.ClickReducer.game.sort((a, b) => {
           return a.id > b.id ? -1 : 1;

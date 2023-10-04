@@ -43,7 +43,7 @@ const INITIAL_STATE = {
   game,
   user1: { mark: false },
   user2: { mark: false },
-  choseP: { player: false },
+  choseP: { player: true },
 };
 
 const ClickReducer = (state = INITIAL_STATE, action: AnyAction) => {

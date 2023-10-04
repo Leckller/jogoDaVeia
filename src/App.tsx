@@ -13,6 +13,7 @@ function App() {
     img{
       width: 50%;
     }
+    
   `;
   return (
     <>
