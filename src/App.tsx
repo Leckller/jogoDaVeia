@@ -9,6 +9,7 @@ function App() {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-variant: small-caps;
     }
     img{
       width: 50%;

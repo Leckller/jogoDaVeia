@@ -15,6 +15,17 @@ export const Main = styled.main`
 
 `;
 
+export const ButtonBot = styled.button`
+  padding: 1vw;
+  margin-top: 2vh;
+  width: 100px;
+  background-color: transparent;
+  border: black solid 1px;
+  border-radius: 10vw;
+  outline: none;
+  cursor: pointer;
+`;
+
 const LayoutDiv = styled.div`
   width: 100vw;
   height: 100vh;

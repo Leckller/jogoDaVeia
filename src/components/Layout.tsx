@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LayoutDiv, { Footer, Header, SecLastGames } from '../styles/HomeStyled';
+import LayoutDiv, { ButtonBot, Footer, Header, SecLastGames } from '../styles/HomeStyled';
 import { Dispatch, GlobalState } from '../types';
 import { startBot } from '../redux/actions/ClickAction';
 
@@ -11,11 +11,11 @@ function Layout() {
     <LayoutDiv id="secGame">
       <Header>
         <h1>Jogo da Velha</h1>
-        <button
+        <ButtonBot
           onClick={ () => dispatch(startBot(store.ClickReducer.bot)) }
         >
           {store.ClickReducer.bot ? 'Desativar Bot' : 'Ativar Bot'}
-        </button>
+        </ButtonBot>
       </Header>
       <Outlet />
       <SecLastGames>
