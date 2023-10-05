@@ -23,8 +23,13 @@ function Home() {
   }
   function winner() {
     Swal.fire({
-      title: `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
-      text: `Não foi dessa vez Player ${velha(store).winner === 1 ? '2' : '1'}`,
+      title: store.ClickReducer.bot ? `Vitória do 
+      ${velha(store).winner === 1 ? 'Player 1' : 'Bot'}`
+        : `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
+      text: store.ClickReducer.bot ? `${velha(store).winner === 1
+        ? 'Boa! vc ganhou de um simples bot, que conquista! (contém ironia)'
+        : 'KKKKKKK perdeu para o bot'}`
+        : `Não foi dessa vez ${velha(store).winner === 1 ? 'Player 2' : 'Player 1'}`,
     });
   }
   function draw() {
