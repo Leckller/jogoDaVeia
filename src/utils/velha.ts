@@ -5,25 +5,14 @@
 import { ST } from '../types';
 
 function isVelha(state: { ClickReducer: { game: ST[] } }) {
-  const arrays = [1, 2, 3, 4, 5, 6, 7, 8];
-  function verifyVelha(id: number[]) {
-    const s1 = state.ClickReducer.game.find((e) => e.id === id[0]);
-    const s2 = state.ClickReducer.game.find((e) => e.id === id[1]);
-    const s3 = state.ClickReducer.game.find((e) => e.id === id[2]);
-    const s4 = state.ClickReducer.game.find((e) => e.id === id[3]);
-    const s5 = state.ClickReducer.game.find((e) => e.id === id[4]);
-    const s6 = state.ClickReducer.game.find((e) => e.id === id[5]);
-    const s7 = state.ClickReducer.game.find((e) => e.id === id[6]);
-    const s8 = state.ClickReducer.game.find((e) => e.id === id[7]);
-    const test = (s1?.v
-       && s2?.v && s3?.v && s4?.v && s5?.v && s6?.v && s7?.v && s8?.v);
-    return test;
-  }
-  return verifyVelha(arrays);
+  const FILTER = state.ClickReducer.game.filter((e) => e.v === true);
+  const allV = FILTER.length === 9;
+  return allV;
 }
 
 export function velha(state: { ClickReducer: { game: ST[] } }) {
   function verifyById(id:number[]) {
+    if (id === undefined) return;
     const s1 = state.ClickReducer.game.find((e) => e.id === id[0]);
     const s2 = state.ClickReducer.game.find((e) => e.id === id[1]);
     const s3 = state.ClickReducer.game.find((e) => e.id === id[2]);
@@ -32,30 +21,20 @@ export function velha(state: { ClickReducer: { game: ST[] } }) {
     return { test, winner: s1?.player };
   }
   function winObj(
-    vBD: (
-      p: number[]) => { test: boolean | undefined, winner: number | undefined },
+    vBD = verifyById,
     ar: number[],
   ) {
     return { victory: true,
-      winner: vBD(ar).winner };
+      winner: vBD(ar)?.winner };
   }
+  const testes = [[1, 2, 3], [4, 5, 6],
+    [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
   function allTests() {
-    if (verifyById([1, 2, 3]).test) return winObj(verifyById, [1, 2, 3]);
-    if (verifyById([4, 5, 6]).test) return winObj(verifyById, [4, 5, 6]);
-    if (verifyById([7, 8, 9]).test) return winObj(verifyById, [7, 8, 9]);
-    if (verifyById([1, 4, 7]).test) return winObj(verifyById, [1, 4, 7]);
-    if (verifyById([2, 5, 8]).test) return winObj(verifyById, [2, 5, 8]);
-    if (verifyById([3, 6, 9]).test) return winObj(verifyById, [3, 6, 9]);
-    if (verifyById([1, 5, 9]).test) return winObj(verifyById, [1, 5, 9]);
-    if (verifyById([3, 5, 7]).test) return winObj(verifyById, [3, 5, 7]);
+    if (testes.some((e) => verifyById(e)?.test === true)) {
+      const array = testes.find((e) => verifyById(e)?.test);
+      return winObj(verifyById, array as number[]);
+    }
     return { victory: !isVelha(state), winner: 'draw' };
   }
   return allTests();
 }
-
-// export function pcBrain(state: { ClickReducer: { game: ST[] } }) {
-//   // gera um nmr aleatório de acordo com a quantidade de espaços disponiveis
-//   // para marcar.
-//   const filterNoMarc = state.ClickReducer.game.filter((e) => e.v === false);
-//   return filterNoMarc;
-// }

@@ -16,43 +16,48 @@ function Home() {
   const store = useSelector((state: GlobalState) => state);
   const img = store.ClickReducer.choseP.player === true ? x : o;
   const [player, setPlayer] = useState(true);
+  function reestart() {
+    setPlayer(true);
+    dispatch(saveGame(store.ClickReducer.game));
+    dispatch(startGame());
+  }
+  function winner() {
+    Swal.fire({
+      title: `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
+      text: `Não foi dessa vez Player ${velha(store).winner === 1 ? '2' : '1'}`,
+    });
+  }
+  function draw() {
+    Swal.fire({
+      title: 'Velha!',
+      text: 'São 2 idosos jogando?',
+    });
+  }
   useEffect(() => {
-    if (!player) {
+    if (velha(store).victory || !velha(store).victory) {
+      if (velha(store).victory && velha(store).winner !== 'draw') {
+        winner();
+        reestart();
+        console.log('win 1');
+      } else if (store.ClickReducer.game
+        .filter((e) => e.v === true).length === 9) {
+        draw();
+        reestart();
+        console.log('draw');
+      }
+    }
+    if (!store.ClickReducer.choseP.player) {
       setPlayer(true);
-      setTimeout(() => {
-        // o erro está exatemente nesse grotesco e enorme erro de lint
+      setTimeout(async () => {
         const whereS = store.ClickReducer.game.filter((e3) => e3.v === false);
-        //   .find((_e2, i, a) => i === Math.floor(Math.random() * a.length - 1)).id;
         const random = Math.floor(Math.random() * whereS.length);
         const where = whereS.find((_eiii, i) => i === random)?.id;
         dispatch(
           pcBrain(where, o),
         );
       }, 200);
+      console.log('brain');
       dispatch(clickAction(store.ClickReducer.choseP.player));
-    }
-    if (!(velha(store).victory) && store.ClickReducer.game
-      .filter((e) => e.v === true).length === 9) {
-      setTimeout(() => {
-        Swal.fire({
-          title: 'Velha!',
-          text: 'São 2 idosos jogando?',
-        });
-        dispatch(saveGame(store.ClickReducer.game));
-        dispatch(startGame());
-        setPlayer(true);
-      }, 800);
-    }
-    if (velha(store).victory && velha(store).winner !== 'draw') {
-      setTimeout(() => {
-        Swal.fire({
-          title: `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
-          text: `Não foi dessa vez Player ${velha(store).winner === 1 ? '2' : '1'}`,
-        });
-        dispatch(saveGame(store.ClickReducer.game));
-        dispatch(startGame());
-        setPlayer(true);
-      }, 500);
     }
   }, [store.ClickReducer.game]);
   return (

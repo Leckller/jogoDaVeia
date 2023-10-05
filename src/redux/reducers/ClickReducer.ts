@@ -67,13 +67,16 @@ const ClickReducer = (state = INITIAL_STATE, action: AnyAction) => {
       return { ...state, choseP: { player: action.payload } };
     }
     case START_GAME: {
-      return { ...state, game };
+      return { ...state, game, choseP: { player: true } };
     }
     case SAVE_GAME: {
       if (state.lastGame[0] === null) return { ...state, lastGame: [action.payload] };
       return { ...state, lastGame: [...state.lastGame, action.payload] };
     }
     case PC_BRAIN: {
+      if (state.game.filter((e) => e.v === true).length === 9) {
+        return { ...state };
+      }
       return { ...state,
         game: [...state.game
           .filter((e) => e.id !== action.payload.id),
