@@ -1,13 +1,22 @@
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LayoutDiv, { Footer, Header, SecLastGames } from '../styles/HomeStyled';
-import { GlobalState } from '../types';
+import { Dispatch, GlobalState } from '../types';
+import { startBot } from '../redux/actions/ClickAction';
 
 function Layout() {
   const store = useSelector((state:GlobalState) => state);
+  const dispatch: Dispatch = useDispatch();
   return (
     <LayoutDiv id="secGame">
-      <Header><h1>Jogo da Velha</h1></Header>
+      <Header>
+        <h1>Jogo da Velha</h1>
+        <button
+          onClick={ () => dispatch(startBot(store.ClickReducer.bot)) }
+        >
+          {store.ClickReducer.bot ? 'Desativar Bot' : 'Ativar Bot'}
+        </button>
+      </Header>
       <Outlet />
       <SecLastGames>
         <h3>Últimos Jogos</h3>

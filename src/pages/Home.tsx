@@ -46,7 +46,7 @@ function Home() {
         console.log('draw');
       }
     }
-    if (!store.ClickReducer.choseP.player) {
+    if (!store.ClickReducer.choseP.player && store.ClickReducer.bot) {
       setPlayer(true);
       setTimeout(async () => {
         const whereS = store.ClickReducer.game.filter((e3) => e3.v === false);

@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux';
 import { CHANGE_PLAYER, CLICK_ACTION, PC_BRAIN, SAVE_GAME,
+  START_BOT,
   START_GAME } from '../actions/ClickAction';
 
 const game = [{
@@ -46,6 +47,7 @@ const INITIAL_STATE = {
   user2: { mark: false },
   choseP: { player: true },
   lastGame: [localStorage.getItem('lastGames')],
+  bot: true,
 };
 
 const ClickReducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -81,6 +83,9 @@ const ClickReducer = (state = INITIAL_STATE, action: AnyAction) => {
         game: [...state.game
           .filter((e) => e.id !== action.payload.id),
         { id: action.payload.id, v: true, img: action.payload.img, player: 2 }] };
+    }
+    case START_BOT: {
+      return { ...state, bot: action.payload, game };
     }
     default: {
       return { ...state };
