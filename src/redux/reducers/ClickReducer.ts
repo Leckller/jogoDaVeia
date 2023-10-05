@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux';
-import { CHANGE_PLAYER, CLICK_ACTION, SAVE_GAME,
+import { CHANGE_PLAYER, CLICK_ACTION, PC_BRAIN, SAVE_GAME,
   START_GAME } from '../actions/ClickAction';
 
 const game = [{
@@ -72,6 +72,12 @@ const ClickReducer = (state = INITIAL_STATE, action: AnyAction) => {
     case SAVE_GAME: {
       if (state.lastGame[0] === null) return { ...state, lastGame: [action.payload] };
       return { ...state, lastGame: [...state.lastGame, action.payload] };
+    }
+    case PC_BRAIN: {
+      return { ...state,
+        game: [...state.game
+          .filter((e) => e.id !== action.payload.id),
+        { id: action.payload.id, v: true, img: action.payload.img, player: 2 }] };
     }
     default: {
       return { ...state };

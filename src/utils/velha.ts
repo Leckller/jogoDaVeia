@@ -52,3 +52,10 @@ export function velha(state: { ClickReducer: { game: ST[] } }) {
   }
   return allTests();
 }
+
+// export function pcBrain(state: { ClickReducer: { game: ST[] } }) {
+//   // gera um nmr aleatório de acordo com a quantidade de espaços disponiveis
+//   // para marcar.
+//   const filterNoMarc = state.ClickReducer.game.filter((e) => e.v === false);
+//   return filterNoMarc;
+// }

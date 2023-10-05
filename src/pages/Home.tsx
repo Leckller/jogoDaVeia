@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { SecGame, Main, ImgPlayers, ImgsDiv } from '../styles/HomeStyled';
 import { Dispatch, GlobalState } from '../types';
-import { changePlayer, clickAction, saveGame,
+import { changePlayer, clickAction, pcBrain, saveGame,
   startGame } from '../redux/actions/ClickAction';
 import x from '../assets/x.png';
 import o from '../assets/o.png';
@@ -17,6 +17,20 @@ function Home() {
   const img = store.ClickReducer.choseP.player === true ? x : o;
   const [player, setPlayer] = useState(true);
   useEffect(() => {
+    if (!player) {
+      setPlayer(true);
+      setTimeout(() => {
+        // o erro está exatemente nesse grotesco e enorme erro de lint
+        const whereS = store.ClickReducer.game.filter((e3) => e3.v === false);
+        //   .find((_e2, i, a) => i === Math.floor(Math.random() * a.length - 1)).id;
+        const random = Math.floor(Math.random() * whereS.length);
+        const where = whereS.find((eiii, i) => i === random)?.id;
+        dispatch(
+          pcBrain(where, o),
+        );
+      }, 200);
+      dispatch(clickAction(store.ClickReducer.choseP.player));
+    }
     if (!(velha(store).victory) && store.ClickReducer.game
       .filter((e) => e.v === true).length === 9) {
       setTimeout(() => {
@@ -26,20 +40,21 @@ function Home() {
         });
         dispatch(saveGame(store.ClickReducer.game));
         dispatch(startGame());
-      }, 200);
+        setPlayer(true);
+      }, 800);
     }
     if (velha(store).victory && velha(store).winner !== 'draw') {
       setTimeout(() => {
-        console.log(velha(store).winner);
         Swal.fire({
           title: `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
           text: `Não foi dessa vez Player ${velha(store).winner === 1 ? '2' : '1'}`,
         });
         dispatch(saveGame(store.ClickReducer.game));
         dispatch(startGame());
-      }, 200);
+        setPlayer(true);
+      }, 500);
     }
-  }, [store]);
+  }, [store.ClickReducer.game]);
   return (
     <Main>
       <ImgsDiv>
@@ -61,7 +76,7 @@ function Home() {
       </ImgsDiv>
       <SecGame>
         {store.ClickReducer.game.sort((a, b) => {
-          return a.id > b.id ? -1 : 1;
+          return a.id > b.id ? 1 : -1;
         }).map((e) => {
           return (
             <button
