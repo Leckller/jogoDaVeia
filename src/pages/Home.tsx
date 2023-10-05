@@ -24,7 +24,7 @@ function Home() {
         const whereS = store.ClickReducer.game.filter((e3) => e3.v === false);
         //   .find((_e2, i, a) => i === Math.floor(Math.random() * a.length - 1)).id;
         const random = Math.floor(Math.random() * whereS.length);
-        const where = whereS.find((eiii, i) => i === random)?.id;
+        const where = whereS.find((_eiii, i) => i === random)?.id;
         dispatch(
           pcBrain(where, o),
         );
