@@ -11,7 +11,7 @@ function Layout() {
   return (
     <LayoutDiv id="secGame">
       <Header>
-        <h1>Jogo da Velha - Beta1.2</h1>
+        <h1>Jogo da Velha - Beta1.3</h1>
         <div>
           <ButtonBot
             onClick={ () => dispatch(startBot(store.ClickReducer.bot)) }

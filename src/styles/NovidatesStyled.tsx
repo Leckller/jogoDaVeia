@@ -11,8 +11,9 @@ export const MainNovidades = styled.main`
   }
   div {
     h2{
-      padding: 1vh;
+      padding: 2vh;
     }
+    margin: 1vh;
     text-align: center;
     display:flex;
     flex-direction: column;
@@ -20,6 +21,8 @@ export const MainNovidades = styled.main`
     height: 20%;
     div{
       height: 100%;
+      border: solid black 1px;
+      padding: 1vw;
     }
 }
 `;

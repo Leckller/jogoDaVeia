@@ -40,9 +40,10 @@ function Home() {
     });
   }
   useEffect(() => {
-    console.log(analises(brainDEFESA(store.ClickReducer.game)));
-    console.log(brainDEFESA(store.ClickReducer.game));
     const claudia = analises(brainDEFESA(store.ClickReducer.game));
+    console.log('xx');
+    console.log(claudia);
+    console.log('xx');
     if (store.ClickReducer.game.length === 10) {
       reestart();
     }

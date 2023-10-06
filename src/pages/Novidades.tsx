@@ -14,10 +14,17 @@ function Novidades() {
       </ButtonBot>
       <h1>Notas da atualização</h1>
       <div>
+        <h2>Beta 2.0</h2>
+        <div>
+          <h3>---- Additions ----</h3>
+          <h4>Bot Cláudia 2.0!</h4>
+        </div>
+      </div>
+      <div>
         <h2>Beta 1.2</h2>
         <div>
           <h3>---- Additions ----</h3>
-          <h4>Bot Cláudia mais defensiva!</h4>
+          <h4>Bot Cláudia mais inteligente!</h4>
           <h4>Rota para as notas de atualização</h4>
           <h3>---- Bugs fixed ----</h3>
           <h4>Bug das 10 casas</h4>
