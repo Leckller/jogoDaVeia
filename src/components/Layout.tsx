@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import LayoutDiv, { ButtonBot, Footer, Header, SecLastGames } from '../styles/HomeStyled';
 import { Dispatch, GlobalState } from '../types';
@@ -7,15 +7,19 @@ import { startBot } from '../redux/actions/ClickAction';
 function Layout() {
   const store = useSelector((state:GlobalState) => state);
   const dispatch: Dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <LayoutDiv id="secGame">
       <Header>
-        <h1>Jogo da Velha</h1>
-        <ButtonBot
-          onClick={ () => dispatch(startBot(store.ClickReducer.bot)) }
-        >
-          {store.ClickReducer.bot ? 'Desativar Bot' : 'Ativar Bot'}
-        </ButtonBot>
+        <h1>Jogo da Velha - Beta1.2</h1>
+        <div>
+          <ButtonBot
+            onClick={ () => dispatch(startBot(store.ClickReducer.bot)) }
+          >
+            {store.ClickReducer.bot ? 'Desativar Bot' : 'Ativar Bot'}
+          </ButtonBot>
+          <ButtonBot onClick={ () => navigate('/novidades') }>Novidades</ButtonBot>
+        </div>
       </Header>
       <Outlet />
       <SecLastGames>

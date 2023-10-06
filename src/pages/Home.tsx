@@ -10,7 +10,7 @@ import { changePlayer, clickAction, pcBrain, saveGame,
 import x from '../assets/x.png';
 import o from '../assets/o.png';
 import { velha } from '../utils/velha';
-import { brainDEFESA } from '../utils/Claudia';
+import { analises, brainDEFESA } from '../utils/Claudia';
 
 function Home() {
   const dispatch: Dispatch = useDispatch();
@@ -40,7 +40,12 @@ function Home() {
     });
   }
   useEffect(() => {
+    console.log(analises(brainDEFESA(store.ClickReducer.game)));
     console.log(brainDEFESA(store.ClickReducer.game));
+    const claudia = analises(brainDEFESA(store.ClickReducer.game));
+    if (store.ClickReducer.game.length === 10) {
+      reestart();
+    }
     if (velha(store).victory || !velha(store).victory) {
       if (velha(store).victory && velha(store).winner !== 'draw') {
         winner();
@@ -60,7 +65,7 @@ function Home() {
         const random = Math.floor(Math.random() * whereS.length);
         const where = whereS.find((_eiii, i) => i === random)?.id;
         dispatch(
-          pcBrain(where, o),
+          pcBrain(claudia.get ? claudia.id : where, o),
         );
       }, 200);
       console.log('brain');

@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import Home from './pages/Home';
 import Layout from './components/Layout';
+import Novidades from './pages/Novidades';
 
 function App() {
   const GlobalStyle = createGlobalStyle`
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={ <Layout /> }>
           <Route index element={ <Home /> } />
         </Route>
+        <Route path="/novidades" element={ <Novidades /> } />
 
       </Routes>
     </>

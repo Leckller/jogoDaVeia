@@ -16,9 +16,9 @@ export const Main = styled.main`
 `;
 
 export const ButtonBot = styled.button`
-  padding: 1vw;
   margin-top: 2vh;
   width: 100px;
+  height: auto;
   background-color: transparent;
   border: black solid 1px;
   border-radius: 10vw;
@@ -76,6 +76,20 @@ export const Header = styled.header`
   text-align: center;
   padding-top: 2vh;
   font-size: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div{
+    display: flex;
+    width: 50%;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+}
 `;
 export const Footer = styled.footer`
   width: 100vw;
