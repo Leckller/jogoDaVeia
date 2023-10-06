@@ -10,6 +10,7 @@ import { changePlayer, clickAction, pcBrain, saveGame,
 import x from '../assets/x.png';
 import o from '../assets/o.png';
 import { velha } from '../utils/velha';
+import { brainDEFESA } from '../utils/Claudia';
 
 function Home() {
   const dispatch: Dispatch = useDispatch();
@@ -24,11 +25,11 @@ function Home() {
   function winner() {
     Swal.fire({
       title: store.ClickReducer.bot ? `Vitória do 
-      ${velha(store).winner === 1 ? 'Player 1' : 'Bot'}`
+      ${velha(store).winner === 1 ? 'Player 1' : 'Bot Cláudia'}`
         : `Vitória do ${velha(store).winner === 1 ? 'Player 1' : 'Player 2'}`,
       text: store.ClickReducer.bot ? `${velha(store).winner === 1
-        ? 'Boa! vc ganhou de um simples bot, que conquista! (contém ironia)'
-        : 'KKKKKKK perdeu para o bot'}`
+        ? 'Mandou bem!!'
+        : 'A Bot Cláudia tá dominando a parada!!'}`
         : `Não foi dessa vez ${velha(store).winner === 1 ? 'Player 2' : 'Player 1'}`,
     });
   }
@@ -39,6 +40,7 @@ function Home() {
     });
   }
   useEffect(() => {
+    console.log(brainDEFESA(store.ClickReducer.game));
     if (velha(store).victory || !velha(store).victory) {
       if (velha(store).victory && velha(store).winner !== 'draw') {
         winner();
