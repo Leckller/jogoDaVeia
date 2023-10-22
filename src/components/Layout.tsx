@@ -50,7 +50,7 @@ function Layout() {
             ))}
         </div>
       </SecLastGames>
-      <Footer>feat by ruy</Footer>
+      <Footer>created by ruy</Footer>
     </LayoutDiv>
   );
 }

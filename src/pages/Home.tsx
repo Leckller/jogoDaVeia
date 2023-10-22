@@ -44,7 +44,7 @@ function Home() {
     console.log('xx');
     console.log(claudia);
     console.log('xx');
-    if (store.ClickReducer.game.length === 10) {
+    if (store.ClickReducer.game.length > 9) {
       reestart();
     }
     if (velha(store).victory || !velha(store).victory) {
