@@ -1,12 +1,12 @@
-import Game from '../components/Game';
-import Header from '../components/Header';
+import Game from '../components/Home/Game';
+import History from '../components/Home/History';
 
 function Home() {
   return (
-    <>
-      <Header />
+    <main className="flex flex-col justify-center items-center gap-10">
       <Game />
-    </>
+      <History />
+    </main>
   );
 }
 

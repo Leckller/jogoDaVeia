@@ -1,5 +1,5 @@
-import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
-import { play } from '../redux/Reducers/Velha';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { play } from '../../redux/Reducers/Velha';
 
 function Box({ index }: { index: number }) {
   const dispatch = useAppDispatch();
@@ -7,9 +7,12 @@ function Box({ index }: { index: number }) {
   return (
     <button
       className="border size-20"
+      disabled={ boxes[index] !== null }
       onClick={ () => { dispatch(play(index)); } }
     >
-      {boxes[index]}
+      <p className="text-2xl font-extrabold">
+        {boxes[index]}
+      </p>
     </button>
   );
 }
