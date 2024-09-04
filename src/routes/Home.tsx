@@ -3,7 +3,7 @@ import History from '../components/Home/History';
 
 function Home() {
   return (
-    <main className="flex flex-col justify-center items-center gap-10">
+    <main className="flex flex-col justify-between items-center gap-10">
       <Game />
       <History />
     </main>
