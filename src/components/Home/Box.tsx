@@ -3,11 +3,11 @@ import { play } from '../../redux/Reducers/Velha';
 
 function Box({ index }: { index: number }) {
   const dispatch = useAppDispatch();
-  const { boxes } = useAppSelector((s) => s.Velha);
+  const { boxes, disable } = useAppSelector((s) => s.Velha);
   return (
     <button
       className="border size-20"
-      disabled={ boxes[index] !== null }
+      disabled={ boxes[index] !== null || disable }
       onClick={ () => { dispatch(play(index)); } }
     >
       <p className="text-2xl font-extrabold">

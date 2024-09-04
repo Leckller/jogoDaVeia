@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    transition: all;
+}
+
 .carrossel {
     scrollbar-width: none;
 }
 
 .carrossel::-webkit-scrollbar {
     display: none;
+}
+.blur {
+    filter: blur(2px);
 }

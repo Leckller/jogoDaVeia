@@ -6,6 +6,8 @@ interface VelhaState {
   player: boolean,
   moves: number,
   history: (string | null)[][],
+  status: string,
+  disable: boolean,
 }
 
 const initialState: VelhaState = {
@@ -13,6 +15,8 @@ const initialState: VelhaState = {
   moves: 0,
   player: false,
   history: [],
+  status: 'Vez do X',
+  disable: false,
 };
 
 export const VelhaSlice = createSlice({
@@ -21,27 +25,35 @@ export const VelhaSlice = createSlice({
   reducers: {
     play(state, action: PayloadAction<number>) {
       state.boxes[+action.payload] = state.player ? 'X' : 'O';
+      state.status = state.player ? 'Vez do X' : 'Vez do O';
       state.moves++;
 
       if (calculateWinner(state.boxes)) {
+        state.disable = true;
         state.history.push(state.boxes);
+        state.status = state.player ? 'Vitoria do X' : 'Vitoria do O';
         state.boxes = initialState.boxes;
         state.moves = initialState.moves;
-        console.log(`Vitoria do jogador ${state.player ? 'X' : 'O'}`);
         return;
       }
 
       if (state.moves >= 9) {
+        state.disable = true;
+        state.history.push(state.boxes);
+        state.status = 'Velha!!';
         state.boxes = initialState.boxes;
         state.moves = initialState.moves;
-        console.log('Velha!');
         return;
       }
 
       state.player = !state.player;
     },
+    reiniciar(state) {
+      state.status = state.player ? 'Vez do X' : 'Vez do O';
+      state.disable = false;
+    },
   },
 });
 
-export const { play } = VelhaSlice.actions;
+export const { play, reiniciar } = VelhaSlice.actions;
 export default VelhaSlice.reducer;
