@@ -15,7 +15,7 @@ const initialState: VelhaState = {
   moves: 0,
   player: false,
   history: [],
-  status: 'Vez do X',
+  status: 'Vez do O',
   disable: false,
 };
 
@@ -41,6 +41,7 @@ export const VelhaSlice = createSlice({
         state.disable = true;
         state.history.push(state.boxes);
         state.status = 'Velha!!';
+        state.player = !state.player;
         state.boxes = initialState.boxes;
         state.moves = initialState.moves;
         return;

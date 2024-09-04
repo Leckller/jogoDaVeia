@@ -16,7 +16,7 @@ function History() {
     document.querySelectorAll('.history').forEach((element) => {
       observer.observe(element);
     });
-  }, []);
+  }, [history]);
 
   return (
     <section

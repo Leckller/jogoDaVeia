@@ -15,10 +15,12 @@ function Game() {
       <section className="grid grid-cols-3 grid-rows-3 relative w-60">
         {disable && (
           <button
-            className="absolute w-full h-full"
+            className="bg-[rgba(0,0,0,0.1)] absolute w-full h-full"
             onClick={ () => dispatch(reiniciar()) }
           >
-            Reiniciar
+            <p className="text-2xl font-bold">
+              Reiniciar
+            </p>
           </button>
         )}
         {boxes.map((_, i) => (
